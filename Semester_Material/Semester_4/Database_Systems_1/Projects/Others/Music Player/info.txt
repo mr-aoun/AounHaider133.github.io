@@ -1,0 +1,5 @@
+Compile:
+javac --module-path "Javafx\lib" --add-modules javafx.controls,javafx.fxml,javafx.media MusicPlayerTest.java
+
+Run:
+java --module-path "Javafx\lib" --add-modules javafx.controls,javafx.fxml,javafx.media MusicPlayerTest
