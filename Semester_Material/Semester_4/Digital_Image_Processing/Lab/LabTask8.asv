@@ -1,0 +1,92 @@
+%%LabTask#08
+%% Filtering in the frequency domain
+
+image = imread("E:\Digital Image Processing\Lab\cui_logo.jpg");
+image = rgb2gray(image);
+
+image = imresize(image,[256,256]);
+
+[x,y] = meshgrid(-128:127, -128:127 );
+dist = sqrt(x.^2+y.^2);
+
+il = (dist < 15);
+il2 = dist < 50;
+il3 = dist < 150;
+%out = image.*il;
+
+af = fftshift(fft2(double(image)));
+ilout = af.*il3;
+iloutput = ifft2(fftshift(ilout));
+
+
+%Working on high pass filter
+
+ih = 1-il;
+ihout = af.*ih;
+ihoutput = ifft2(fftshift(ihout));
+
+%Working on Butterworth low pass filter
+%D(u, v) = sqrt((u - U/2)^2 + (v - V/2)^2)
+bl = 1./(1 + dist/150.^(2*1));
+
+bfout = af.*bl;
+bfoutput = uint8(ifft2(fftshift(bfout)));
+
+figure;
+subplot(1,3,1);
+imshow(bf); title('BLPF');
+
+subplot(1,3,2);
+imshow(uint8(1+log(ihout)),[]); title('Low pass filtered image (multiplied)');
+
+subplot(1,3,3);
+imshow(bfoutput); title('BLPF image');
+
+%Working on high pass butterworth filter
+bl2 = 1./(1 + dist/50.^(2*1));
+bh = 1 - bl2;
+bhout = af.*bh;
+bhoutput = ifft2(fftshift(bhout));
+
+figure;
+subplot(1,2,1);
+imshow(bh); title('BHPF');
+subplot(1,2,2);
+imshow(bhoutput); title('BHPF filtered image');
+
+% Working on Guassian Low pass filter
+gl = exp(-(dist.^2/(2*(15^2))));
+gl2 = exp(-(dist.^2/(2*(50^2))));
+
+glout = af.*gl2;
+gloutput = uint8(ifft2(fftshift(glout)));
+
+figure;
+subplot(1,2,1);
+imshow(glout); title('GLPF');
+subplot(1,2,2);
+imshow(gloutput); title('GLPF filtered image');
+
+%Working on Guassian high pass filter
+gh = 1 - gl;
+ghout = af.*gh;
+ghoutput = uint8(ifft2(fftshift(ghout)));
+
+figure;
+subplot(1,2,1);
+imshow(ghout); title('GHPF');
+subplot(1,2,2);
+imshow(ghoutput); title('GHPF filtered image');
+
+subplot(4,3,2);
+imshow(image); title('Orignal Image');
+subplot(4,3,4);
+imshow(il); title('Filter');
+subplot(4,3,5);
+imshow(uint8(1+log(ilout)),[]); title('IDLF');
+subplot(4,3,6);
+imshow(uint8(iloutput)); title('IDLF Filtered image');
+subplot(4,3,7);
+imshow(ih); title('IDHF');
+
+imshow(uint8(ihoutput)); title('High pass filtered image');

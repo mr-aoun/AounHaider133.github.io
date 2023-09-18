@@ -1,0 +1,10 @@
+%% Reading and displaying image
+A = imread('E:/download.jfif');
+imshow(A);
+%disp(A);
+
+%Getting size of image
+[row,col] = size(A);
+
+disp(row);
+disp(col);
