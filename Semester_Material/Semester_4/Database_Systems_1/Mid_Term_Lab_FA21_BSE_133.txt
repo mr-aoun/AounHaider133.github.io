@@ -1,0 +1,44 @@
+Name: Aoun-Haider
+ID: FA21-BSE-133
+Section: A
+
+-- 1: Details of private owners from London city
+ select * from privateOwner where address like '%London%';
+
+ -- 2: Details of clients who have not visited a single property yet
+ select * from client where clientNo not in (select clientNo from viewing)
+
+ -- 3: Details of staff who have not been assigned a branch yet
+ select * from staff where branchNo is null;
+
+ -- 4: Details of branches in descending order -
+select b.branchNo,b.street,b.city,b.postcode,avg(s.salary) as Average_Salary from branch b inner join staff s on b.branchNo = s.branchNo 
+group by b.branchNo,b.street,b.city,b.postcode
+order by Average_Salary desc
+ 
+
+ -- 5: Details of branchNo B003 along with employee detail who is drawing minimum salary in that branch -
+ select top 1 s.*,b.* from staff s inner join branch b on s.branchNo = b.branchNo where s.branchNo = 'B003' order by s.salary 
+
+
+ -- 6: Details of staff members whose birthday is on the 30th day of month
+ select * from staff where day(DOB) = '30'
+
+ -- 7: Details of clients are also private owners
+ select * from privateOwner p join client c on p.fName = c.fName and p.lName = c.lName
+
+ -- 8: Details of branch where the highest number of properties are registered
+ select top 1 b.branchNo,b.street,b.city,b.postcode,p.branchNo,count(p.branchNo) as properties
+from propertyForRent p inner join branch b on p.branchNo = b.branchNo
+group by b.branchNo,b.street,b.city,b.postcode,p.branchNo order by p.branchNo
+
+
+ -- 9: Show the details of branches where male members are more than two
+select b.branchNo,b.street,b.city,b.postcode from branch b inner join staff s on b.branchNo = s.branchNo
+group by b.branchNo,b.street,b.city,b.postcode having
+(select count(*) from staff where sex = 'M') > 2
+
+ -- 10: Details of private owners who have more than two properties
+select o.ownerNo,o.fNAme,o.lname,o.address,o.telNo,o.eMail,count(p.ownerNo) as properties from propertyForRent p
+inner join privateOwner o on p.ownerNo = o.ownerNo group by o.ownerNo,o.fNAme,o.lname,o.address,o.telNo,o.eMail,p.ownerNo
+having count(p.ownerNo) > 2
