@@ -1,0 +1,189 @@
+
+Student ID			_________________________________ [fill before starting paper]
+
+Student Name: 		_________________________________ [fill before starting paper]
+
+Section:			_________________________________ [fill before starting paper]
+
+
+Course Name: 		Object Oriented Programming - Lab
+Exam:				Terminal Examination Fall 2020
+					COMSATS University Islamabad, Lahore Campus
+					
+Class/Program:		SP20-BSE
+Section				A and B
+Time: 				2 Hours 40 Minutes
+Submission Time		10 Minutes
+Paper End Time		4 PM (Including submission time)
+Exam Date			December 31, 2020 
+Total Marks			50 (4 Questions. 10+10+10+20)
+
+
+Important Instructions
+
+1. You must complete and upload the exam in-time. 1 mark per minute would be deducted on submissions 
+after 4pm.
+
+2. If your code matched with any other student, both may get F grade in course and face UMC case.
+
+3. Write code in your IDE to test whether it work, then paste in answer section or in specified place 
+below, do not write code that I have not asked.
+
+4. Code MUST BE properly indented and well readable (use good variable/method names etc.)
+
+
+
+**************************************************************************************************
+************************************* QUESTION 1 [10 Marks] **************************************
+**************************************************************************************************
+
+
+Define Employee class in package p1, with id, name and income fields. Define id and name as public, 
+do not define get/set methods for them. Encapsulate 'income' attributes in such a way that, the test
+code (i.e. where we create the Employee object) should only be able to read the value of income (when 
+test code reside outside the package p1). If the test code resides in package p1, it should also be 
+able to update/set the value of the 'income' field.
+
+Answer: (Write/paste the answer code below this line. Indent properly. Do'nt code that is not asked.)
+
+
+
+
+
+
+
+
+
+**************************************************************************************************
+************************************* QUESTION 2 [10 Marks] **************************************
+**************************************************************************************************
+
+
+Create required classes, enums, etc. for the given requirements. Assume we need to represent employees, 
+each employee has an id, name, phone number, designation, manager, department and team members working 
+under him/her. The manager is also an employee and team members are also employee (definitely, multiple 
+members in a team). There are only four departments (a fix list, you can say) e.g. SALES, PURCHASE, 
+ACCOUNTS and WAREHOUSE. We also want to store phone number of each department (assume it would not change).
+
+The employee phone number shall be composed of area code and line number. Define Employee in such a 
+way that its object should not be created unless user provide id, designation and the deparment. (Only 
+classes/enums definitions are required, no need to create objects and get any data from user to demostrate 
+complete usage etc.)
+
+Answer: (Write/paste the answer code below this line. Indent properly. Don't code what is not asked.)
+
+
+
+
+
+
+
+
+**************************************************************************************************
+************************************* QUESTION 3 [10 Marks] **************************************
+**************************************************************************************************
+
+
+Consider below given code of TestClass.java file carefully along with comments inside the code. Define 
+the body of getStudentAverageMarks and getBatchAverageMarks methods.
+
+class Student {
+	int id; 
+	public double marks[][]; // MUST READ below comments about marks array 
+	
+	/* first index of 2D array represent subject. Second index represent marks in a test of that subject.
+	e.g. marks[1][2] would store marks of subject 2 and its test 3
+	each student may have different number of subjects and different number of tests 
+	please do not bother about storing subject names, we don't need them in given case
+	*/
+	
+	public double getStudentAverageMarks(){
+		// define body of this method here ... not in a separate answer section
+	}
+}
+
+class Section {
+	String sectionName;
+	public Student[] students;
+}
+
+class Batch{
+	String batchName;
+	Section[] sections;
+}
+
+public class TestClass {
+
+	public static double getBatchAverageMarks(Batch batch) {
+		// Define the body of this method here ... not in a separate answer section
+		// Assume the batch object passed in parameter is fully populated
+		
+	}
+}
+
+
+
+**************************************************************************************************
+************************************* QUESTION 4 [20 Marks] **************************************
+**************************************************************************************************
+
+
+Consider the Book class and BookService interfaces given below.
+
+1. Define constructor of Book class (inside the Book class code given above), such that it shall take 
+and intialize 'title' and 'available' fields. It shall auto assign a unique id to each book, starting 
+from 1. (you can add new fields in below given Book class code, required to meet this requirement). 
+[5 marks]
+
+
+2. Create BookServiceImpl class that shall implement BookService interface. It shall implement all 
+methods of the interface.  All books should be stored in instance variable books of type ArrayList<Book>. 
+When class is loaded, 3 books shall be automatically added in books collection. [5 Marks]
+
+
+3. Define BookAlreadyExistException, BookNotFoundException, BookAlreadyIssuedException as checked 
+exceptions. Each exception object shall also store the book ID. Define a constructor that takes and 
+initialize book id and Override getMessage such that, it shall return the <Exception name, Book ID>. 
+[5 Marks]
+
+
+4. Create a BookServiceTest class. In main method, call add, getBook and isseBook methods that shall handle 
+the potential exceptions. It shall print the book id and exception name. No need to get data from user. 
+Hard code whatever you need to call these methods. [5 Marks]
+
+
+class Book {
+	private int id;
+	private String title;
+	private boolean available; // true means, available in library. can be issued
+	
+	// define constructor here
+	
+	// assume all get/set are already defined	
+}
+
+public interface BookService {
+
+	// add method shall add the passed book, if book ID matches with existing books
+	// it show throw BookAlreadyExistException
+    void add(Book book) throws BookAlreadyExistException;
+	
+	// getBook shall return the book of ID passed in argument. or throw BookNotFoundException
+    Book getBook(int bookID) throws BookNotFoundException;
+	
+	// isseBook shall set the book 'available' field to false.
+	// it shall throw the BookAlreadyIssuedException if the 'available' field is already false	
+	boolean issueBook(int bookID) BookAlreadyIssuedException;	
+}
+
+
+// Define all exceptions classes here
+
+
+// Define BookServiceImpl class here 
+
+
+// Define BookServiceTest here
+
+
+************************************************* Good Luck *******************************************
