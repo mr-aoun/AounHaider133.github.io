@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Product Detail</title>
+	
+    
+	<link rel="stylesheet" href="product_detail_style.css">
+	<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+ 
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+  </head>
+
+  <body>
+  
+ <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+        <a class="navbar-brand" href="#">ShopHub</a>
+ 
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2"
+                       type="search"
+                       placeholder="Search"
+                       aria-label="Search" />
+                <button class="btn btn-light my-2 my-sm-0"
+                        type="submit">
+                    Search
+                </button>
+            </form>
+        </div>
+    </nav>
+  <!--Nav Bar -->
+	
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="image/1.png" /></div>
+						  
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="image/1.png" /></a></li>
+  <li><a data-target="#pic-2" data-toggle="tab"><img src="image/1.png" /></a></li>
+  <li><a data-target="#pic-3" data-toggle="tab"><img src="image/2.png" /></a></li>
+  <li><a data-target="#pic-4" data-toggle="tab"><img src="image/1.png" /></a></li>
+  <li><a data-target="#pic-5" data-toggle="tab"><img src="image/1.png" /></a></li>
+</ul>
+
+						
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title">men's shoes fashion</h3>
+						<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+						</div>
+						<h4 class="price">current price: <span>$180</span></h4>
+						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+						<h5 class="sizes">sizes:
+							<span class="size" data-toggle="tooltip" title="small">s</span>
+							<span class="size" data-toggle="tooltip" title="medium">m</span>
+							<span class="size" data-toggle="tooltip" title="large">l</span>
+							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+						</h5>
+						
+						<div class="action">
+							<button class="add-to-cart btn btn-warning" type="button">add to cart</button>
+							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+						</div>
+						<p></p>
+						<h3 style="text-decoration:underline;">More:</h3>
+						<p class="product-description">This product is manufactured in Lahore industrial plant with amazing ratings.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+    <div class="copy">&copy; ShopHub.com All rights reserved.</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="links">
+        <span>Social Links</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

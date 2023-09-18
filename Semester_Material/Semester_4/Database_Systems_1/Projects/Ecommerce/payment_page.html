@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  
+  <style>
+  
+  
+  </style>
+</head>
+
+  <div class="card" id = "PaymentPage">
+  <div class="card-header">
+    <h3>Select Payment</h3>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="accountNo">Account Number:</label>
+      <input type="text" id="accountNo" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="paymentMethod">Payment Method:</label>
+      <select id="paymentMethod" class="form-control">
+        <option value="HBL">HBL</option>
+        <option value="SadaPay">SadaPay</option>
+        <option value="JazzCash">JazzCash</option>
+        <option value="Allied Bank">Allied Bank</option>
+        <option value="PayPal">PayPal</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="bookOrder()">Book</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="successModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Order Placed</h5>
+      </div>
+      <div class="modal-body">
+        <p>Your order has been placed and will be delivered tomorrow at 9:00 AM.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal" onclick = "openHomePage()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<body>
+
+  <link rel="stylesheet" href="Pages_Style.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function bookOrder() {
+    var accountNoInput = document.getElementById("accountNo");
+    var paymentMethodSelect = document.getElementById("paymentMethod");
+
+    // Validate account number
+    var accountNo = accountNoInput.value.trim();
+    if (accountNo === "") {
+      alert("Please enter your account number.");
+      accountNoInput.focus();
+      return;
+    }
+    if (accountNo.length !== 10 || isNaN(accountNo)) {
+      alert("Please enter a valid 10-digit account number.");
+      accountNoInput.focus();
+      return;
+    }
+
+    // Perform validation on payment method if needed
+
+    // Show success modal
+    var successModal = new bootstrap.Modal(document.getElementById("successModal"));
+    successModal.show();
+	
+  }
+  function openHomePage()
+  {
+    window.location.href = "home_page.html";
+  }
+  </script>
+</body>
+
+</html>

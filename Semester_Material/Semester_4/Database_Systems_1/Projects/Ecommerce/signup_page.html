@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="Pages_Style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="card hidden" id="signupCard">
+      <div class="card-body">
+        <div class="card-title">Sign-up</div>
+        <div class="form-group">
+          <label for="signupUsername">Username:</label>
+          <input type="text" class="form-control" id="signupUsername" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password:</label>
+          <input type="password" class="form-control" id="signupPassword" placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" class="form-control" id="age" placeholder="Enter your age">
+        </div>
+        <button class="btn btn-primary" onclick="validateSignUp()">Sign-up</button>
+        <div class="existing-account mt-2">Already have an account? <a href="#" onclick="showSignInPage()">Sign-in</a></div>
+		
+      </div>
+	  
+    </div>
+<!--Sign-in Page-->
+    <div class="card" id="signinCard">
+      <div class="card-body">
+        <div class="card-title">Sign-in</div>
+        <div class="form-group">
+          <label for="signinUsername">Username:</label>
+          <input type="text" class="form-control" id="signinUsername" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+          <label for="signinPassword">Password:</label>
+          <input type="password" class="form-control" id="signinPassword" placeholder="Enter your password">
+        </div>
+        <button class="btn btn-primary" onclick="validateSignIn()">Sign-in</button>
+        <div class="existing-account mt-2">Don't have an account? <a href="#" onclick="showSignUpPage()">Sign-up</a></div>
+		<div class="forget-password mt-2">Forget Password? <a href="#" onclick="showForgotPasswordPage()">Click Here</a></div>
+		<div class="forget-password mt-2"> <a href="#" onclick="showChangePassword()">Change Password</a></div>
+      </div>
+    </div>
+  
+<!--Sign-in Page end-->
+
+  <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalLabel">Error</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="errorModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Success</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body"><p>Account created successfully.</p></div>
+      </div>
+    </div>
+  </div>
+  
+  <!--Forget password-->
+  <div class="card hidden" id="forgotPasswordCard">
+    <div class="card-body">
+      <div class="card-title">Forget Password</div>
+      <div class="form-group">
+        <label for="forgotPasswordUsername">Username:</label>
+        <input type="text" class="form-control" id="forgotPasswordUsername" placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label for="forgotPasswordEmail">Email:</label>
+        <input type="email" class="form-control" id="forgotPasswordEmail" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="forgotPasswordAge">Age:</label>
+        <input type="number" class="form-control" id="forgotPasswordAge" placeholder="Enter your age">
+      </div>
+      <button class="btn btn-primary" onclick="validateForgotPassword()">Submit</button>
+      
+  </div>
+  </div>
+  <!-- Change Password -->
+    <div class="card hidden" id="changePasswordCard">
+      <div class="card-body">
+        <div class="card-title">Change Password</div>
+        <div class="form-group">
+          <label for="changePasswordUsername">Username:</label>
+          <input type="text" class="form-control" id="changePasswordUsername" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+          <label for="changePasswordPassword">Password:</label>
+          <input type="password" class="form-control" id="changePasswordPassword" placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+          <label for="changePasswordNewPassword">New Password:</label>
+          <input type="password" class="form-control" id="changePasswordNewPassword" placeholder="Enter your new password">
+        </div>
+        <button class="btn btn-primary" onclick="validateChangePassword()">Submit</button>
+      </div>
+    </div>
+	
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // User data array
+    var users = [
+      { username: "Aoun", password: "abc@1234", email: "FA21-BSE-133@cuilahore.edu.pk", age: "20" },
+      { username: "Dawood", password: "xyz@1234", email: "FA21-BSE-152@cuilahore.edu.pk", age: "20" }
+    ];
+
+  function validatePassword(password) {
+  var specialCharCount = 0;
+  var letterCount = 0;
+  var digitCount = 0;
+
+  for (var i = 0; i < password.length; i++) {
+    var char = password[i];
+
+    if (isSpecialCharacter(char)) {
+      specialCharCount++;
+    } else if (isLetter(char)) {
+      letterCount++;
+    } else if (isDigit(char)) {
+      digitCount++;
+    }
+  }
+
+  return specialCharCount >= 1 && letterCount >= 2 && digitCount >= 3;
+}
+
+function isSpecialCharacter(char) {
+  var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+  return specialCharRegex.test(char);
+}
+
+function isLetter(char) {
+  var letterRegex = /[a-zA-Z]/;
+  return letterRegex.test(char);
+}
+
+function isDigit(char) {
+  var digitRegex = /\d/;
+  return digitRegex.test(char);
+}
+
+    // Function to validate sign-up
+    function validateSignUp() {
+      var signupUsername = document.getElementById("signupUsername").value;
+      var signupPassword = document.getElementById("signupPassword").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+      var email = document.getElementById("email").value;
+      var age = document.getElementById("age").value;
+
+      if (signupUsername === "" || signupPassword === "" || confirmPassword === "" || email === "" || age === "") {
+        showError("Please enter all the required fields.");
+      } else if (signupPassword !== confirmPassword) {
+        showError("Passwords do not match.");
+      } else if(signupPassword.length<8){
+	    showError("Length of password must be 8");
+	  }
+	  
+	  else if (age < 0) {
+        showError("Age must not be negative.");
+      }else if(!validatePassword(signupPassword)){
+	    showError("Password must contain digit and special characters!");
+	  }
+	  else {
+        // Store the user data
+        var newUser = {
+          username: signupUsername,
+          password: signupPassword,
+          email: email,
+          age: age
+        };
+        users.push(newUser);
+
+        // Sign-up successful
+        showSuccess("Account created successfully.");
+        clearSignUpFields();
+      }
+    }
+
+    // Function to validate sign-in
+    function validateSignIn() {
+      var signinUsername = document.getElementById("signinUsername").value;
+      var signinPassword = document.getElementById("signinPassword").value;
+
+      if (signinUsername === "" || signinPassword === "") {
+        showError("Please enter both username and password.");
+      } else {
+        var user = users.find(function (u) {
+          return u.username === signinUsername && u.password === signinPassword;
+        });
+
+        if (user) {
+          // Sign-in successful
+          //showSuccess("Sign-in successful.");
+          clearSignInFields();
+		  console.log('Sign-in accessed!');
+		  showShoppingCart();
+        } else {
+          showError("Invalid username or password.");
+        }
+      }
+    }
+
+    // Function to show error message in modal
+    function showError(message) {
+      var errorModalBody = document.getElementById("errorModalBody");
+      errorModalBody.textContent = message;
+      var errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+      errorModal.show();
+    }
+
+    // Function to show success message in modal
+function showSuccess(message) {
+  var successModal = new bootstrap.Modal(document.getElementById("successModal"));
+  var modalBody = document.querySelector("#successModal .modal-body");
+  var modalMessage = modalBody.querySelector("p");
+  modalMessage.textContent = message;
+  successModal.show();
+}
+
+
+    // Function to clear sign-up fields
+    function clearSignUpFields() {
+      document.getElementById("signupUsername").value = "";
+      document.getElementById("signupPassword").value = "";
+      document.getElementById("confirmPassword").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("age").value = "";
+    }
+
+    // Function to clear sign-in fields
+    function clearSignInFields() {
+      document.getElementById("signinUsername").value = "";
+      document.getElementById("signinPassword").value = "";
+    }
+
+    // Function to show sign-up page and hide sign-in page
+    function showSignUpPage() {
+      document.getElementById("signupCard").classList.remove("hidden");
+      document.getElementById("signinCard").classList.add("hidden");
+    }
+
+    // Function to show sign-in page and hide sign-up page
+    function showSignInPage() {
+      document.getElementById("signupCard").classList.add("hidden");
+      document.getElementById("signinCard").classList.remove("hidden");
+    }
+	// Function to show forget password page and hide sign-in page
+    function showForgotPasswordPage() {
+      document.getElementById("signinCard").classList.add("hidden");
+      document.getElementById("forgotPasswordCard").classList.remove("hidden");
+    }
+	// Function to validate the forgot password form
+function validateForgotPassword() {
+  var username = document.getElementById("forgotPasswordUsername").value;
+  var email = document.getElementById("forgotPasswordEmail").value;
+  var age = document.getElementById("forgotPasswordAge").value;
+
+  if (username === "" || email === "" || age === "") {
+    showError("Please enter all the required fields.");
+  } else {
+    var user = users.find(function (u) {
+      return u.username === username && u.email === email && u.age.toString() === age;
+    });
+
+    if (user) {
+      // Show the user's password in a prompt message
+      alert("Your password is: " + user.password);
+
+      //clear all the fields
+      clearForgotPasswordFields();      
+      // Show the sign-in page
+      document.getElementById("forgotPasswordCard").classList.add("hidden");
+      document.getElementById("signinCard").classList.remove("hidden");
+    } else {
+      showError("Invalid username, email, or age.");
+    }
+  }
+}
+// Function to clear the forgot password form fields
+function clearForgotPasswordFields() {
+  document.getElementById("forgotPasswordUsername").value = "";
+  document.getElementById("forgotPasswordEmail").value = "";
+  document.getElementById("forgotPasswordAge").value = "";
+}
+// Function to validate and handle change password
+    function validateChangePassword() {
+      var usernameInput = document.getElementById("changePasswordUsername");
+      var passwordInput = document.getElementById("changePasswordPassword");
+      var newPasswordInput = document.getElementById("changePasswordNewPassword");
+
+      var username = usernameInput.value;
+      var password = passwordInput.value;
+      var newPassword = newPasswordInput.value;
+
+      if(newPassword.length <8){
+	  showError("Password must contain atleast 8 characters!");
+	  return;
+	  }
+	  
+      // Find user by username
+      var user = users.find(function (user) {
+        return user.username === username;
+      });
+
+      if (!user) {
+        showError("Username not found");
+        return;
+      }
+
+      // Check if the password matches
+      if (user.password !== password) {
+        showError("Incorrect password");
+        return;
+      }
+	  if(!validatePassword(newPassword))
+	  {
+	    showError("Password must contain special characters and digits!");
+	    return;
+	  }
+
+      // Update the password
+      user.password = newPassword;
+      showSuccess("Password changed successfully");
+	  document.getElementById("signinCard").classList.remove("hidden");
+	  
+      document.getElementById("changePasswordCard").classList.add("hidden");
+    }
+	// Function to show the "Change Password" card and hide the "Sign-in" card
+function showChangePassword() {
+  var signinCard = document.getElementById("signinCard");
+  var changePasswordCard = document.getElementById("changePasswordCard");
+
+  signinCard.classList.add("hidden");
+  changePasswordCard.classList.remove("hidden");
+}
+function showShopingCart()
+{
+   var signinCard = document.getElementById("signinCard");
+   var shopingCart = document.getElementById("shopingCart");
+   
+   signinCard.classList.add("hidden");
+   shopingCart.classList.remove("hidden");
+}
+function showShoppingCart() {
+  // Redirect to shopping.html
+  window.location.href = "shoping_cart_page.html";
+}
+
+  </script>
+</body>
+
+</html>
