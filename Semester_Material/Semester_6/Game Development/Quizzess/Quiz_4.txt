@@ -1,0 +1,80 @@
+
+Quiz-3 FA21-BSE
+Choose one most suitable answer from following MCQs
+fa21-bse-133@cuilahore.edu.pk Switch account
+ 
+Draft saved
+* Indicates required question
+Email
+*
+FA21-BSE-133@cuilahore.edu.pk
+Vector2 pos = new Vector2(0, 0), will place the 2D object
+*
+1 point
+whose x and y positions are zero.
+whose x , y and z positions are zero.
+whose x and z positions are zero.
+whose y and z positions are zero.
+_________ can paint the tiles on a layer for a 2D game
+*
+1 point
+Tile Pallet
+Tile Map
+Grid
+Terrain Paint Texture
+The difference between a particular 2D animator and 3D animator is that in 2D animator a transition from an Entry state to Default state :
+*
+1 point
+is in one direction
+is bi-directional
+has no direction
+there is no difference
+In a 2D game a sprite renderer can be added to an empty game object to:
+1 point
+make it behave like gameobject
+to Give empty gameobject a shape and image
+All of the above
+None of the above
+_________ component give image to an empty game object
+*
+1 point
+Mesh Renderer
+Sprite Renderer
+Rigidbody2d
+None of the above
+Animator can be updated by:
+*
+1 point
+adding more animation states to the animator and giving it a motion clip
+adding more animation states to the animator
+adding more animation states to the animator, giving it a motion clip and making parameters for transitions
+making parameters for transitions
+In a 2D game, apart from a collider 2D, which component is essential for collision detection
+*
+1 point
+Animator
+Audio source
+Rigidbody
+None of the above
+Different ____________ layers can be added to a 2D game depending on which level you want to set a 2D sprite
+*
+1 point
+default
+sorting
+order
+None of the above
+_____________ should be applied on Tile map to make the 2d character stay on a surface
+*
+1 point
+Rigidbody 2D
+Box Collider 2D
+Animator
+Tilemap collider
+Few 2D animations can be created through
+1 point
+JPG images
+set of png images in different poses
+UI image
+both option b and c
+This form was created inside of Education. Report Abuse
+Google Forms

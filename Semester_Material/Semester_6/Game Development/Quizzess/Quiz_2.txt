@@ -1,0 +1,79 @@
+
+SP24-BSE-Quiz2
+Choose correct answer from following MCQs (CLO-2 creating)
+fa21-bse-133@cuilahore.edu.pk Switch account
+ 
+Draft saved
+* Indicates required question
+Email
+*
+Record fa21-bse-133@cuilahore.edu.pk as the email to be included with my response
+Source image of any UI element should be converted:
+*
+1 point
+png
+texture
+2D sprite
+2D sprite with single mode
+A ___________ will maintain the audio control of the game in different levels of the game
+*
+1 point
+an audio source
+an audio listener
+a public static flag variable
+none of the above
+In audio source default settings:
+*
+1 point
+Play on awake is disabled and loop is enabled
+Both Play on awake and loop are enabled
+Play on awake is enabled and loop is disabled
+Both Play on awake and loop are disabled
+______________________ will mute all audios in the game.
+*
+1 point
+audio.mute=true;
+audio.mute(true);
+AudioListener.Volume=0;
+AudioListener.Volume(0);
+A __________ child can be used as independent game-object only when it is unpacked completely
+1 point
+particle system's
+prefab's
+package's
+cube's
+A ___________ reference can be given from prefab folder instead of passing it from game hierarchy 
+*
+1 point
+animator
+audio source
+prefab
+collider
+A ____________ option in terrain can add trees all over the terrain on a single click
+*
+1 point
+Paint Tree
+Paint Texture
+Raise Tree
+Tree Texture
+Components required to detect collision between two gameobjects are:
+*
+1 point
+colliders in both gameobjects
+collider in one and rigidbody in both gameobjects
+collider and rigidbody in both gameobjects
+collider in both and rigidbody in any one gameobjects
+_________________ will disappear the game object whenever called.
+*
+1 point
+gameobject.SetActive = fasle;
+gameobject.SetActive(false);
+gameobject.SetDisplay(false);
+gameobject.SetDisplay=false ;
+if a script instantiates a game-object by any input key, on what game-object that script should NOT be attached?
+*
+1 point
+empty Gameobject
+object that needs to be instantiated
+a button
+none of the above

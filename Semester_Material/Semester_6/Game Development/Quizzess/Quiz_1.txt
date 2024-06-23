@@ -1,0 +1,60 @@
+In Unity the transform that controls the rotation of any 3D object is known as
+1 point
+position
+angle
+rotation
+magnitude
+__________  can only be given by rigidbody to the game object in unity
+1 point
+Bounciness
+Rotation
+audio
+None of the above
+_____________ folder is the default folder, formed when a project is created in unity
+1 point
+Empty folder
+Asset folder
+textures folder
+None of the above
+_____________ is/are the default game objects when a project is created in unity
+1 point
+Main Camera
+Directional light
+Both of the above
+None of the above
+In a 3D game the depth of the scene is represented by ____ axis
+1 point
+x axis
+y axis
+z axis
+all x, y and z axis
+In Audio Source, "Play on Awake" option is:
+1 point
+disabled by default
+Play the Audio only through script
+if disabled, Play the audio when Game-Play button is clicked
+if disabled, Does not play the Audio when Game-Play button is clicked
+A skybox is a: 
+1 point
+texture
+image
+scene
+cube
+_______________ can be added to any sphere to give it a bouncy effect
+1 point
+Bounciness
+collider
+Script
+Physics Material
+When a texture is stretched on any game object, _________ can be applied to split the texture into multiple segments.
+1 point
+tiling
+chopping
+segmentation
+split
+To turn a car left/right, it should be rotated on:
+1 point
+x and y axis
+only x axis
+only y axis
+only z axis
