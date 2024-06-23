@@ -1,0 +1,94 @@
+FTP:
+--------
+C:\Users\Aoun Haider>ftp ftp.dlptest.com
+Connected to ftp.dlptest.com.
+220 Welcome to the DLP Test FTP Server
+200 Always in UTF8 mode.
+User (ftp.dlptest.com:(none)): none
+331 Please specify the password.
+Password:
+530 Login incorrect.
+Login failed.
+ftp> USER
+Username dlpuser
+331 Please specify the password.
+Password:
+230 Login successful.
+ftp> ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+11
+BunkerEastProdProxiesResFile_bebluecoat6_2023-11-06-08-30-02.txt
+BunkerWestProdProxiesResFile_bwbluecoat6_2023-11-06-06-30-03.txt
+TestUpload.kml
+_11471977
+input
+testscr_1148687578.dat
+testscr_1148706000.dat
+testscr_1148724250.dat
+testscr_1148737312.dat
+testscr_1148753562.dat
+testscr_1148773140.dat
+226 Directory send OK.
+ftp: 317 bytes received in 0.09Seconds 3.37Kbytes/sec.
+ftp> lcd E:\
+Local directory now E:\.
+ftp> cd FTP
+550 Failed to change directory.
+ftp> ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+11
+BunkerEastProdProxiesResFile_bebluecoat6_2023-11-06-08-30-02.txt
+BunkerWestProdProxiesResFile_bwbluecoat6_2023-11-06-06-30-03.txt
+KLJKLJLJKL
+TestUpload.kml
+UYUIYUIY
+_11471977
+bees.txt
+hp.txt
+input
+powerquote.txt
+testscr_1148687578.dat
+testscr_1148706000.dat
+testscr_1148724250.dat
+testscr_1148737312.dat
+testscr_1148753562.dat
+testscr_1148773140.dat
+testscr_1148786046.dat
+testscr_1148798437.dat
+testscr_1148818203.dat
+testscr_1148831640.dat
+testscr_1148845656.dat
+testscr_1148865000.dat
+testscr_1148877484.dat
+testscr_1148889250.dat
+testscr_1148908234.dat
+testscr_1148927328.dat
+testscr_1148939953.dat
+226 Directory send OK.
+ftp: 637 bytes received in 0.07Seconds 9.23Kbytes/sec.
+ftp> get powerquote.txt
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for powerquote.txt (67181 bytes).
+226 Transfer complete.
+ftp: 67181 bytes received in 3.14Seconds 21.37Kbytes/sec.
+ftp> put offline.txt
+200 PORT command successful. Consider using PASV.
+150 Ok to send data.
+226 Transfer complete.
+ftp: 1125 bytes sent in 1.00Seconds 1.12Kbytes/sec.
+ftp> bye
+221 Goodbye.
+
+C:\Users\Aoun Haider>
+-----------------------
+Username and password:
+-----------------------
+dlpuser
+rNrKYTX9g7z3RgJRmxWuGHbeu
+
+Commands:
+--------------------
+ls, lcd, get, put, bye
+-----------------------
