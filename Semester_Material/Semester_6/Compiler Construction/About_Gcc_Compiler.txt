@@ -1,0 +1,26 @@
+cpp is used to perform preprocessing:
+Macro Expansion
+File inclusion
+Conditional compilation
+Removal of comments
+Line control
+Stringization and token passing
+
+gcc -O2 -g -o p main.c swap.c
+cpp [other arguments] main.c /tmp/main.i
+
+Generate assembly code using GCC:
+cc1 /tmp/main.i main.c -O2 [other arguments] -o /tmp/main.s
+
+Generate assembly code using GNU:
+as [other arguments] -o /tmp/main.o /tmp/main.s
+
+Linking using GNU
+ld -o p [system object files and args] /tmp/main.o /tmp/swap.o
+
+Execute
+./p
+
+Read symbol table of file:
+gcc -c main.c -o main.o
+readelf -s main.o
