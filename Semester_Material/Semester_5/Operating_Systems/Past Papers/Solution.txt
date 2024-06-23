@@ -1,0 +1,105 @@
+Wait reduces value by 1 and signal increases the value by 1
+
+Since X = 0 at the start, it is clear that P4 and P5 cannot execute first.
+
+5 possible execution orders of the processes are:-
+
+i) P1, P2, P3, P4, P6, P5
+
+Explanation:-
+
+Initially, X =0 , Y=1, Z=1
+
+After P1 executes :- X =0 , Y=1, Z=1
+
+After P2 :- X =1 , Y=1, Z=0
+
+After P3 :- X =1, Y=0, Z=1
+
+After P4 :- X =0, Y = 1, Z=1
+
+After P6 :- X=1, Y=1,Z=0
+
+After P5 :- X=0,Y=1,Z=0
+
+Thus, processes can execute in this order.
+
+ii)  P1, P6, P3, P4, P2, P5
+
+Explanation :- 
+
+Initially, X =0 , Y=1, Z=1
+
+After P1 executes :- X =0 , Y=1, Z=1
+
+After P6 :- X =1 , Y=1, Z=0
+
+After P3 :- X =1, Y=0, Z=1
+
+After P4 :- X =0, Y = 1, Z=1
+
+After P2 :- X=1, Y=1,Z=0
+
+After P5 :- X=0,Y=1,Z=0
+
+Thus, processes can execute in this order.
+
+iii) P2, P3, P1, P4, P6, P5
+
+Explanation:- 
+
+Initially, X =0 , Y=1, Z=1
+
+After P2 executes :- X =1 , Y=1, Z=0
+
+After P3 :- X =1 , Y=0, Z=1
+
+After P1 :- X =1, Y=0, Z=1
+
+After P4 :- X =0, Y = 1, Z=1
+
+After P6 :- X=1, Y=1,Z=0
+
+After P5 :- X=0,Y=1,Z=0
+
+Thus, processes can execute in this order.
+
+iv) P6, P3, P1, P4, P2, P5
+
+Explanation:- 
+
+Initially, X =0 , Y=1, Z=1
+
+After P6 executes :- X =1 , Y=1, Z=0
+
+After P3 :- X =1 , Y=0, Z=1
+
+After P1 :- X =1, Y=0, Z=1
+
+After P4 :- X =0, Y = 1, Z=1
+
+After P2 :- X=1, Y=1,Z=0
+
+After P5 :- X=0,Y=1,Z=0
+
+Thus, processes can execute in this order.
+
+v) P6, P4, P3, P1, P2, P5
+
+Explanation:- 
+
+Initially, X =0 , Y=1, Z=1
+
+After P6 executes :- X =1 , Y=1, Z=0
+
+After P4 :- X =0 , Y=1, Z=0
+
+After P3 :- X =0, Y=0, Z=1
+
+After P1 :- X =0, Y = 0, Z=1
+
+After P2 :- X=1, Y=0,Z=0
+
+After P5 :- X=0,Y=1,Z=0
+
+Thus, processes can execute in this order.
