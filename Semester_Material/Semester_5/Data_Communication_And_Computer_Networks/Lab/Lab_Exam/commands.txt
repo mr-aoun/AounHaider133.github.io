@@ -1,0 +1,256 @@
+Tue Oct 24 16:09:15 2023   Router1   Router>enable
+Tue Oct 24 16:09:17 2023   Router1   Router#conf t
+Tue Oct 24 16:11:05 2023   Router2   Router>enable
+Tue Oct 24 16:11:07 2023   Router2   Router#conf t
+Tue Oct 24 16:11:13 2023   Router2   Router(config)#interface fastEthernet 0/0
+Tue Oct 24 16:11:28 2023   Router2   Router(config-if)#ip address 200.133.100.3 255.255.255.0
+Tue Oct 24 16:11:33 2023   Router2   Router(config-if)#no shutdown
+Tue Oct 24 16:11:47 2023   Router2   Router(config-if)#interface fastEthernet 1/0
+Tue Oct 24 16:11:55 2023   Router2   Router(config-if)#ip address 200.133.101.1 255.255.255.0
+Tue Oct 24 16:12:01 2023   Router2   Router(config-if)#no shutdown
+Tue Oct 24 16:12:17 2023   Router2   Router(config-if)#interface serial 2/0
+Tue Oct 24 16:12:34 2023   Router2   Router(config-if)#ip address 200.133.101.2 255.255.255.0
+Tue Oct 24 16:12:40 2023   Router2   Router(config-if)#ip address 200.133.103.2 255.255.255.0
+Tue Oct 24 16:12:51 2023   Router2   Router(config-if)#no shutdown
+Tue Oct 24 16:13:00 2023   Router2   Router(config-if)#interface serial 3/0
+Tue Oct 24 16:13:08 2023   Router2   Router(config-if)#ip address 200.133.102.1 255.255.255.0
+Tue Oct 24 16:13:10 2023   Router2   Router(config-if)#no shutdown
+Tue Oct 24 16:13:18 2023   Router2   Router(config-if)#exit
+Tue Oct 24 16:13:44 2023   Router2   Router(config)#interface fastEthernet 1/0
+Tue Oct 24 16:13:57 2023   Router2   Router(config-if)#ip helper-address 200.133.100.1
+Tue Oct 24 16:14:02 2023   Router2   Router(config-if)#exit
+Tue Oct 24 16:16:57 2023   Router2   Router(config)#write memory
+Tue Oct 24 16:17:01 2023   Router2   Router(config)#interface fastEthernet 1/0
+Tue Oct 24 16:17:04 2023   Router2   Router(config-if)#ip helper-address 200.133.100.1
+Tue Oct 24 16:17:09 2023   Router2   Router(config-if)#write memory
+Tue Oct 24 16:17:15 2023   Router2   Router(config-if)#end
+Tue Oct 24 16:26:40 2023   Switch19   Switch>enable
+Tue Oct 24 16:26:41 2023   Switch19   Switch#conf t
+Tue Oct 24 16:26:46 2023   Switch19   Switch(config)#vlan 5
+Tue Oct 24 16:26:53 2023   Switch19   Switch(config-vlan)#name Lab_A
+Tue Oct 24 16:26:55 2023   Switch19   Switch(config-vlan)#end
+Tue Oct 24 16:26:59 2023   Switch19   Switch#conf t
+Tue Oct 24 16:27:40 2023   Switch19   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:27:46 2023   Switch19   Switch(config-if-range)#switchport mode access
+Tue Oct 24 16:27:54 2023   Switch19   Switch(config-if-range)#switchport access vlan 5
+Tue Oct 24 16:27:57 2023   Switch19   Switch(config-if-range)#exit
+Tue Oct 24 16:27:59 2023   Switch19   Switch(config)#exit
+Tue Oct 24 16:28:03 2023   Switch19   Switch#show vlan
+Tue Oct 24 16:28:21 2023   Switch18   Switch>enable
+Tue Oct 24 16:28:22 2023   Switch18   Switch#conf t
+Tue Oct 24 16:28:27 2023   Switch18   Switch(config)#vlan 6
+Tue Oct 24 16:28:31 2023   Switch18   Switch(config-vlan)#name Lab_B
+Tue Oct 24 16:28:32 2023   Switch18   Switch(config-vlan)#exit
+Tue Oct 24 16:28:45 2023   Switch18   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:28:50 2023   Switch18   Switch(config-if-range)#switchport mode access
+Tue Oct 24 16:28:58 2023   Switch18   Switch(config-if-range)#switchport access vlan 6
+Tue Oct 24 16:29:01 2023   Switch18   Switch(config-if-range)#exit
+Tue Oct 24 16:29:02 2023   Switch18   Switch(config)#exit
+Tue Oct 24 16:29:04 2023   Switch18   Switch#show vlan
+Tue Oct 24 16:29:44 2023   Switch17   Switch>enable
+Tue Oct 24 16:29:46 2023   Switch17   Switch#conf t
+Tue Oct 24 16:29:47 2023   Switch17   Switch(config)#vlan 7
+Tue Oct 24 16:29:52 2023   Switch17   Switch(config-vlan)#name Lab_C
+Tue Oct 24 16:29:53 2023   Switch17   Switch(config-vlan)#exit
+Tue Oct 24 16:30:09 2023   Switch17   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:30:14 2023   Switch17   Switch(config-if-range)#switchport mode access
+Tue Oct 24 16:30:23 2023   Switch17   Switch(config-if-range)#switchport access vlan 7
+Tue Oct 24 16:30:25 2023   Switch17   Switch(config-if-range)#exit
+Tue Oct 24 16:30:26 2023   Switch17   Switch(config)#exit
+Tue Oct 24 16:30:30 2023   Switch17   Switch#show vlan
+Tue Oct 24 16:34:07 2023   Switch16   Switch>enable
+Tue Oct 24 16:34:09 2023   Switch16   Switch#conf t
+Tue Oct 24 16:34:21 2023   Switch16   Switch(config)#vlan 8
+Tue Oct 24 16:34:27 2023   Switch16   Switch(config-vlan)#name Faculty_Block
+Tue Oct 24 16:34:31 2023   Switch16   Switch(config-vlan)#exit
+Tue Oct 24 16:34:44 2023   Switch16   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:34:49 2023   Switch16   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 16:34:57 2023   Switch16   Switch(config-if-range)#switchport access vlan 8
+Tue Oct 24 16:34:59 2023   Switch16   Switch(config-if-range)#exit
+Tue Oct 24 16:35:02 2023   Switch16   Switch(config)#exit
+Tue Oct 24 16:35:05 2023   Switch16   Switch#show vlan
+Tue Oct 24 16:41:16 2023   Switch15   Switch>enable
+Tue Oct 24 16:41:17 2023   Switch15   Switch#conf t
+Tue Oct 24 16:41:25 2023   Switch15   Switch(config)#vlan 9
+Tue Oct 24 16:41:29 2023   Switch15   Switch(config-vlan)#name Lab_A
+Tue Oct 24 16:41:31 2023   Switch15   Switch(config-vlan)#exit
+Tue Oct 24 16:41:40 2023   Switch15   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:41:50 2023   Switch15   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 16:41:57 2023   Switch15   Switch(config-if-range)#switchport access vlan 9
+Tue Oct 24 16:41:58 2023   Switch15   Switch(config-if-range)#exit
+Tue Oct 24 16:41:59 2023   Switch15   Switch(config)#exit
+Tue Oct 24 16:42:01 2023   Switch15   Switch#show vlan
+Tue Oct 24 16:42:17 2023   Switch14   Switch>enable
+Tue Oct 24 16:42:18 2023   Switch14   Switch#conf t
+Tue Oct 24 16:42:25 2023   Switch14   Switch(config)#vlan 10
+Tue Oct 24 16:42:29 2023   Switch14   Switch(config-vlan)#name Lab_B
+Tue Oct 24 16:42:34 2023   Switch14   Switch(config-vlan)#exit
+Tue Oct 24 16:42:45 2023   Switch14   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/2
+Tue Oct 24 16:42:48 2023   Switch14   Switch(config-if-range)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:42:57 2023   Switch14   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 16:43:06 2023   Switch14   Switch(config-if-range)#switchport access vlan 10
+Tue Oct 24 16:43:07 2023   Switch14   Switch(config-if-range)#exit
+Tue Oct 24 16:43:08 2023   Switch14   Switch(config)#exit
+Tue Oct 24 16:43:10 2023   Switch14   Switch#show vlan
+Tue Oct 24 16:43:23 2023   Switch13   Switch>enable
+Tue Oct 24 16:43:25 2023   Switch13   Switch#conf t
+Tue Oct 24 16:43:31 2023   Switch13   Switch(config)#vlan 11
+Tue Oct 24 16:43:35 2023   Switch13   Switch(config-vlan)#name Lab_C
+Tue Oct 24 16:43:40 2023   Switch13   Switch(config-vlan)#exit
+Tue Oct 24 16:43:48 2023   Switch13   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:43:54 2023   Switch13   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 16:44:04 2023   Switch13   Switch(config-if-range)#switchport access vlan 11
+Tue Oct 24 16:44:05 2023   Switch13   Switch(config-if-range)#exit
+Tue Oct 24 16:44:06 2023   Switch13   Switch(config)#exit
+Tue Oct 24 16:44:08 2023   Switch13   Switch#show vlan
+Tue Oct 24 16:44:21 2023   Switch12   Switch>enable
+Tue Oct 24 16:44:22 2023   Switch12   Switch#conf t
+Tue Oct 24 16:44:25 2023   Switch12   Switch(config)#vlan 12
+Tue Oct 24 16:44:30 2023   Switch12   Switch(config-vlan)#name Faculty_Block
+Tue Oct 24 16:44:33 2023   Switch12   Switch(config-vlan)#exit
+Tue Oct 24 16:44:46 2023   Switch12   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:44:54 2023   Switch12   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 16:44:56 2023   Switch12   Switch(config-if-range)#sw
+Tue Oct 24 16:45:06 2023   Switch12   Switch(config-if-range)#switchport access vlan 12
+Tue Oct 24 16:45:08 2023   Switch12   Switch(config-if-range)#exit
+Tue Oct 24 16:45:09 2023   Switch12   Switch(config)#exit
+Tue Oct 24 16:45:11 2023   Switch12   Switch#show vlan
+Tue Oct 24 16:45:42 2023   Router4   Router>enable
+Tue Oct 24 16:45:43 2023   Router4   Router#conf t
+Tue Oct 24 16:45:57 2023   Router4   Router(config)#interface fastEthernet 0/0
+Tue Oct 24 16:46:06 2023   Router4   Router(config-if)#ip address 200.133.100.1
+Tue Oct 24 16:46:11 2023   Router4   Router(config-if)#ip address 200.133.100.1 255.255.255.0
+Tue Oct 24 16:46:16 2023   Router4   Router(config-if)#no shutdown
+Tue Oct 24 16:46:30 2023   Router4   Router(config-if)#interface serial 2/0
+Tue Oct 24 16:46:41 2023   Router4   Router(config-if)#ip address 200.133.101.1
+Tue Oct 24 16:46:45 2023   Router4   Router(config-if)#ip address 200.133.101.1 255.255.255.0
+Tue Oct 24 16:46:48 2023   Router4   Router(config-if)#no shutdown
+Tue Oct 24 16:46:54 2023   Router4   Router(config-if)#interface serial 3/0
+Tue Oct 24 16:46:58 2023   Router4   Router(config-if)#ip address 200.133.102.1 255.255.255.0
+Tue Oct 24 16:47:01 2023   Router4   Router(config-if)#no shutdown
+Tue Oct 24 16:47:02 2023   Router4   Router(config-if)#exit
+Tue Oct 24 16:47:26 2023   Router3   Router>enabl
+Tue Oct 24 16:47:28 2023   Router3   Router#conf t
+Tue Oct 24 16:47:39 2023   Router3   Router(config)#interface fastEthernet 0/0
+Tue Oct 24 16:47:45 2023   Router3   Router(config-if)#ip address 200.133.100.1
+Tue Oct 24 16:47:49 2023   Router3   Router(config-if)#ip address 200.133.100.1 255.255.255.0
+Tue Oct 24 16:47:53 2023   Router3   Router(config-if)#no shutdown
+Tue Oct 24 16:48:01 2023   Router3   Router(config-if)#interface serial 2/0
+Tue Oct 24 16:48:12 2023   Router3   Router(config-if)#ip address 200.133.101.1 255.255.255.0
+Tue Oct 24 16:48:17 2023   Router3   Router(config-if)#no shutdown
+Tue Oct 24 16:48:18 2023   Router3   Router(config-if)#exit
+Tue Oct 24 16:48:24 2023   Router3   Router(config)#interface serial 3/0
+Tue Oct 24 16:48:32 2023   Router3   Router(config-if)#ip address 200.1
+Tue Oct 24 16:48:49 2023   Router3   Router(config-if)#ip address 200.133.102.1 255.255.255.0
+Tue Oct 24 16:48:52 2023   Router3   Router(config-if)#no shutdown
+Tue Oct 24 16:48:55 2023   Router3   Router(config-if)#exit
+Tue Oct 24 16:49:06 2023   Router1   Router>enable
+Tue Oct 24 16:49:08 2023   Router1   Router#conf t
+Tue Oct 24 16:50:28 2023   Router1   Router(config)#conf t
+Tue Oct 24 16:50:40 2023   Router1   Router(config)#interface fastEthernet 0/0
+Tue Oct 24 16:50:48 2023   Router1   Router(config-if)#ip address 200.133.100.1
+Tue Oct 24 16:50:53 2023   Router1   Router(config-if)#ip address 200.133.100.1 255.255.255.0
+Tue Oct 24 16:50:57 2023   Router1   Router(config-if)#no shutdown
+Tue Oct 24 16:51:06 2023   Router1   Router(config-if)#interface serial 2/0
+Tue Oct 24 16:51:27 2023   Router1   Router(config-if)#ip address 200.133.101.1 255.255.255.0
+Tue Oct 24 16:51:31 2023   Router1   Router(config-if)#no shutdown
+Tue Oct 24 16:51:41 2023   Router1   Router(config-if)#interface 
+Tue Oct 24 16:51:45 2023   Router1   Router(config-if)#interface serial 3/0
+Tue Oct 24 16:51:51 2023   Router1   Router(config-if)#ip address 200.133.102.1 255.255.255.0
+Tue Oct 24 16:51:54 2023   Router1   Router(config-if)#no shutdown
+Tue Oct 24 16:51:55 2023   Router1   Router(config-if)#no shutdown
+Tue Oct 24 16:51:58 2023   Router1   Router(config-if)#exit
+Tue Oct 24 16:55:25 2023   Switch4   Switch>enable
+Tue Oct 24 16:55:27 2023   Switch4   Switch#conf t
+Tue Oct 24 16:55:46 2023   Switch4   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:55:53 2023   Switch4   Switch(config-if-range)#switchport mode access
+Tue Oct 24 16:56:02 2023   Switch4   Switch(config-if-range)#switchport access vlan 5
+Tue Oct 24 16:56:07 2023   Switch4   Switch(config-if-range)#exit
+Tue Oct 24 16:56:09 2023   Switch4   Switch(config)#vlan 5
+Tue Oct 24 16:56:13 2023   Switch4   Switch(config-vlan)#name Lab_A
+Tue Oct 24 16:56:15 2023   Switch4   Switch(config-vlan)#exit
+Tue Oct 24 16:56:16 2023   Switch4   Switch(config)#exit
+Tue Oct 24 16:56:18 2023   Switch4   Switch#show vlan
+Tue Oct 24 16:57:58 2023   Switch5   Switch>enable
+Tue Oct 24 16:57:59 2023   Switch5   Switch#conf t
+Tue Oct 24 16:58:02 2023   Switch5   Switch(config)#vlan 6
+Tue Oct 24 16:58:06 2023   Switch5   Switch(config-vlan)#name Lab_B
+Tue Oct 24 16:58:08 2023   Switch5   Switch(config-vlan)#exit
+Tue Oct 24 16:58:17 2023   Switch5   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 16:58:21 2023   Switch5   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 16:58:29 2023   Switch5   Switch(config-if-range)#switchport access vlan 6
+Tue Oct 24 16:58:31 2023   Switch5   Switch(config-if-range)#exit
+Tue Oct 24 16:58:33 2023   Switch5   Switch(config)#exit
+Tue Oct 24 16:58:34 2023   Switch5   Switch#show vlan
+Tue Oct 24 16:58:49 2023   Switch2   Switch>enable
+Tue Oct 24 16:58:51 2023   Switch2   Switch#conf t
+Tue Oct 24 16:58:53 2023   Switch2   Switch(config)#vlan 5
+Tue Oct 24 16:58:59 2023   Switch2   Switch(config-vlan)#name Lab_A
+Tue Oct 24 16:59:02 2023   Switch2   Switch(config-vlan)#vlan 6
+Tue Oct 24 16:59:08 2023   Switch2   Switch(config-vlan)#name Lab_B
+Tue Oct 24 16:59:10 2023   Switch2   Switch(config-vlan)#vlan 7
+Tue Oct 24 16:59:16 2023   Switch2   Switch(config-vlan)#name Lab_C
+Tue Oct 24 16:59:20 2023   Switch2   Switch(config-vlan)#vlan 8
+Tue Oct 24 16:59:33 2023   Switch2   Switch(config-vlan)#name Faculty_Block
+Tue Oct 24 16:59:35 2023   Switch2   Switch(config-vlan)#exit
+Tue Oct 24 16:59:37 2023   Switch2   Switch(config)#exit
+Tue Oct 24 16:59:39 2023   Switch2   Switch#e
+Tue Oct 24 16:59:41 2023   Switch2   Switch#conf t
+Tue Oct 24 17:00:01 2023   Switch2   Switch(config)#interface fastEthernet 0/2
+Tue Oct 24 17:00:10 2023   Switch2   Switch(config-if)#switchport mode trunk 
+Tue Oct 24 17:00:13 2023   Switch2   Switch(config-if)#exit
+Tue Oct 24 17:00:41 2023   Switch2   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:00:45 2023   Switch2   Switch(config-if-range)#switchport mode trunk 
+Tue Oct 24 17:00:52 2023   Switch2   Switch(config-if-range)#switchport trunk vlan 5
+Tue Oct 24 17:00:54 2023   Switch2   Switch(config-if-range)#exit
+Tue Oct 24 17:10:25 2023   Switch8   Switch>enable
+Tue Oct 24 17:10:26 2023   Switch8   Switch#conf t
+Tue Oct 24 17:10:28 2023   Switch8   Switch(config)#vlan 5
+Tue Oct 24 17:10:32 2023   Switch8   Switch(config-vlan)#name Lab_A
+Tue Oct 24 17:10:34 2023   Switch8   Switch(config-vlan)#exit
+Tue Oct 24 17:10:46 2023   Switch8   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:10:50 2023   Switch8   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 17:10:56 2023   Switch8   Switch(config-if-range)#switchport access vlan 5
+Tue Oct 24 17:11:02 2023   Switch8   Switch(config-if-range)#exit
+Tue Oct 24 17:11:11 2023   Switch9   Switch>enable
+Tue Oct 24 17:11:12 2023   Switch9   Switch#conf t
+Tue Oct 24 17:11:17 2023   Switch9   Switch(config)#vlan 6
+Tue Oct 24 17:11:23 2023   Switch9   Switch(config-vlan)#name Lab_B
+Tue Oct 24 17:11:25 2023   Switch9   Switch(config-vlan)#exit
+Tue Oct 24 17:11:33 2023   Switch9   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:11:36 2023   Switch9   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 17:11:45 2023   Switch9   Switch(config-if-range)#switchport access vlan 6
+Tue Oct 24 17:11:47 2023   Switch9   Switch(config-if-range)#exit
+Tue Oct 24 17:11:58 2023   Switch10   Switch>enable
+Tue Oct 24 17:11:59 2023   Switch10   Switch#conf t
+Tue Oct 24 17:12:02 2023   Switch10   Switch(config)#vlan 7
+Tue Oct 24 17:12:06 2023   Switch10   Switch(config-vlan)#name Lab_C
+Tue Oct 24 17:12:07 2023   Switch10   Switch(config-vlan)#exit
+Tue Oct 24 17:12:15 2023   Switch10   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:12:22 2023   Switch10   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 17:12:29 2023   Switch10   Switch(config-if-range)#switchport access vlan 7
+Tue Oct 24 17:12:30 2023   Switch10   Switch(config-if-range)#exit
+Tue Oct 24 17:12:40 2023   Switch11   Switch>enable 
+Tue Oct 24 17:12:42 2023   Switch11   Switch#conf t
+Tue Oct 24 17:12:46 2023   Switch11   Switch(config)#vlan 8
+Tue Oct 24 17:12:51 2023   Switch11   Switch(config-vlan)#name Faculty_Block
+Tue Oct 24 17:13:00 2023   Switch11   Switch(config-vlan)#exit
+Tue Oct 24 17:13:08 2023   Switch11   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:13:13 2023   Switch11   Switch(config-if-range)#switchport mode access 
+Tue Oct 24 17:13:20 2023   Switch11   Switch(config-if-range)#switchport access vlan 8
+Tue Oct 24 17:13:22 2023   Switch11   Switch(config-if-range)#exit
+Tue Oct 24 17:13:35 2023   Switch1   Switch>enable
+Tue Oct 24 17:13:36 2023   Switch1   Switch#conf t
+Tue Oct 24 17:13:58 2023   Switch1   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:14:08 2023   Switch1   Switch(config-if-range)#switchport mode trunk 
+Tue Oct 24 17:14:36 2023   Switch3   Switch>enable
+Tue Oct 24 17:14:38 2023   Switch3   Switch#conf t
+Tue Oct 24 17:14:50 2023   Switch3   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:14:56 2023   Switch3   Switch(config-if-range)#switchport mode trunk 
+Tue Oct 24 17:14:57 2023   Switch3   Switch(config-if-range)#e
+Tue Oct 24 17:14:58 2023   Switch3   Switch(config)#exit
+Tue Oct 24 17:15:17 2023   Switch0   Switch>enable
+Tue Oct 24 17:15:18 2023   Switch0   Switch#conf t
+Tue Oct 24 17:15:28 2023   Switch0   Switch(config)#interface range fastEthernet 0/1 - fastEthernet 0/5
+Tue Oct 24 17:15:32 2023   Switch0   Switch(config-if-range)#switchport mode trunk 
+Tue Oct 24 17:15:33 2023   Switch0   Switch(config-if-range)#exit
